@@ -84,7 +84,7 @@ $recipeImages = findimages($id);
                                     </button>
                                 </div>
                             <?php } else { ?>
-                                <img class="recipe-image img-fluid" alt="Alt image" src="assets/images/recipes/<?php echo $id; ?>.png" width="100%" height="100%" />
+                                <img class="recipe-image img-fluid" style="object-fit: cover;" alt="Alt image" src="assets/images/recipes/<?php echo $id; ?>.png" width="100%" height="100%" />
                             <?php } ?>
                         </div>
 

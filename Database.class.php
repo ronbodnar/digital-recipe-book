@@ -1,11 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
-
 date_default_timezone_set('America/Los_Angeles');
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
 class Database
 {
@@ -15,14 +10,20 @@ class Database
     function __construct()
     {
         try {
-            $host = $_ENV['DB_HOST'];
-            $database   = $_ENV['DB_DATABASE'];
+            // Sqlite3 Configuration
+            $this->connection = new PDO('sqlite:'.__DIR__.'/database.sqlite');
+
+            /*
+             * MySQL Configuration. DotEnv by vlucas required.
+             */
+            /*$host     = $_ENV['DB_HOST'];
+            $database = $_ENV['DB_DATABASE'];
             $username = $_ENV['DB_USERNAME'];
             $password = $_ENV['DB_PASSWORD'];
             $this->connection = new PDO('mysql:host=' . $host . ';dbname=' . $database, $username, $password, array(
                 PDO::ATTR_PERSISTENT => true
             ));
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
         } catch (PDOException $e) {
             echo '<strong>PDO MySQL Error: ' . $e->getMessage() . '</strong><br />';
         }
